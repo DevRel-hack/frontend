@@ -1,14 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { rtkqApi } from '~/components/pages/Helpers/api/RTKQuery';
+import { rtkqApiHelpers } from '~/components/pages/Helpers/api/RTKQueryHelpers';
+import { rtkqApiPeople } from '~/components/pages/People/api/RTKQueryPeople';
 import counterSlice from './slices/example';
+import peopleSlice from './slices/people';
+import attributesSlice from './slices/attributes';
 
 export const store = configureStore({
   reducer: {
-    [rtkqApi.reducerPath]: rtkqApi.reducer,
+    [rtkqApiHelpers.reducerPath]: rtkqApiHelpers.reducer,
+    [rtkqApiPeople.reducerPath]: rtkqApiPeople.reducer,
+    people: peopleSlice,
     counter: counterSlice,
+    attributes: attributesSlice,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(rtkqApi.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(rtkqApiHelpers.middleware).concat(rtkqApiPeople.middleware),
 });
 
 setupListeners(store.dispatch);

@@ -1,4 +1,4 @@
-import { useGetComplimentQuery } from '../../api/RTKQuery';
+import { useGetComplimentQuery } from '../../api/RTKQueryHelpers';
 
 export default function Compliment() {
   const { data } = useGetComplimentQuery(null);

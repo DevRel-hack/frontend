@@ -1,27 +1,35 @@
 import style from './FiltersList.module.css';
-import { Button } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import FilterDropper from '~/components/ui/FilterDropped/FilterDropped';
+import { dataBd, dataColleague, dataCom } from './constants';
+import { useAppSelector } from '~/lib/hooks/reduxHooks';
+import { selectAttributes } from '~/store/slices/attributes';
+import { getTitleList } from '~/lib/utils/getTitleList';
 
 const FiltersList = () => {
-  const dataCom = ['Сообщество 1', 'Сообщество 2', 'Сообщество 3', 'Подгружаются с бэка'];
-  const dataBd = ['Внутренняя БД1', 'Внутренняя БД2', 'Внешняя БД1', 'Внешняя БД2', 'Подгружаются с бэка'];
-  const data = ['var1', 'var2', 'Подгружаются с бэка'];
+  const attributes = useAppSelector(selectAttributes);
 
   const [bdFilters, setBdFilters] = useState<string[]>([]);
   const [comFilters, setComFilters] = useState<string[]>([]);
   const [directionsFilters, setDirectionsFilters] = useState<string[]>([]);
-  const [toolsFilters, setToolsFilters] = useState<string[]>([]);
   const [citiesFilters, setCitiesFilters] = useState<string[]>([]);
-  const [gradeFilters, setGradeFilters] = useState<string[]>([]);
+  const [roleFilters, setRoleFilters] = useState<string[]>([]);
+  const [isColleague, setIsColleague] = useState<string[]>([]);
+  const [query, setQuery] = useState('');
+  // const [gradeFilters, setGradeFilters] = useState<string[]>([]);
+  // const [toolsFilters, setToolsFilters] = useState<string[]>([]);
 
   const resetAllFilters = () => {
     setBdFilters([]);
     setComFilters([]);
     setDirectionsFilters([]);
-    setToolsFilters([]);
     setCitiesFilters([]);
-    setGradeFilters([]);
+    setIsColleague([]);
+    setQuery('');
+    setRoleFilters([]);
+    // setToolsFilters([]);
+    // setGradeFilters([]);
   };
 
   useEffect(() => {
@@ -40,11 +48,40 @@ const FiltersList = () => {
     <section className={style['container']}>
       <div className={style['container']}>
         <FilterDropper data={dataBd} label="Выбрать базу данных" state={bdFilters} setState={setBdFilters} />
-        <FilterDropper data={dataCom} label="Компьюнити" state={comFilters} setState={setComFilters} />
-        <FilterDropper data={data} label="Направления" state={directionsFilters} setState={setDirectionsFilters} />
-        <FilterDropper data={data} label="Инструменты" state={toolsFilters} setState={setToolsFilters} />
-        <FilterDropper data={data} label="Города" state={citiesFilters} setState={setCitiesFilters} />
-        <FilterDropper data={data} label="Уровни" state={gradeFilters} setState={setGradeFilters} />
+        <FilterDropper data={dataCom} label="Комьюнити" state={comFilters} setState={setComFilters} />
+        <FilterDropper
+          data={dataColleague}
+          label="Это сотрудник компании?"
+          state={isColleague}
+          setState={setIsColleague}
+          multy={false}
+        />
+        <FilterDropper
+          data={getTitleList(attributes.roles)}
+          label="Роль на предыдущем мероприятии"
+          state={roleFilters}
+          setState={setRoleFilters}
+          multy={false}
+        />
+        <FilterDropper
+          data={getTitleList(attributes.jobs)}
+          label="Направления"
+          state={directionsFilters}
+          setState={setDirectionsFilters}
+        />
+        <FilterDropper
+          data={getTitleList(attributes.cities)}
+          label="Города"
+          state={citiesFilters}
+          setState={setCitiesFilters}
+        />
+        <TextField
+          label="Фамилия | email | tel | company"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+        />
+        {/* <FilterDropper data={data} label="Уровни" state={gradeFilters} setState={setGradeFilters} /> */}
+        {/* <FilterDropper data={data} label="Инструменты" state={toolsFilters} setState={setToolsFilters} /> */}
       </div>
 
       <div className={style['container']}>

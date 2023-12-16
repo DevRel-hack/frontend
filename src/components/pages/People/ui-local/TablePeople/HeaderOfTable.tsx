@@ -10,24 +10,44 @@ interface ColumnData {
 
 const columns: ColumnData[] = [
   {
-    width: 255,
-    label: 'Cтудент',
-    dataKey: 'student',
+    width: 50,
+    label: 'Аватар',
+    dataKey: 'avatar',
   },
   {
-    width: 130,
+    width: 100,
+    label: 'Имя',
+    dataKey: 'firstName',
+  },
+  {
+    width: 100,
+    label: 'Фамилия',
+    dataKey: 'lastName',
+  },
+  {
+    width: 120,
     label: 'Контакты',
     dataKey: 'contacts',
   },
   {
-    width: 320,
-    label: 'Статус отклика',
-    dataKey: 'status',
+    width: 150,
+    label: 'Грейд',
+    dataKey: 'grade',
   },
   {
-    width: 232,
-    label: 'Резюме',
-    dataKey: 'resume',
+    width: 100,
+    label: 'Город',
+    dataKey: 'city',
+  },
+  {
+    width: 100,
+    label: 'Направление',
+    dataKey: 'direction',
+  },
+  {
+    width: 100,
+    label: 'Сотрудник компании?',
+    dataKey: 'isColleague',
   },
 ];
 

@@ -1,4 +1,4 @@
-import { useGetRandomFactAboutCatQuery } from '~/components/pages/Helpers/api/RTKQuery';
+import { useGetRandomFactAboutCatQuery } from '~/components/pages/Helpers/api/RTKQueryHelpers';
 
 export default function CatFact() {
   const { data } = useGetRandomFactAboutCatQuery(null);

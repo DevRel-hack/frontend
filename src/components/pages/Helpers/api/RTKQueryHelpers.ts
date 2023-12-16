@@ -10,8 +10,8 @@ interface IgetCompliment {
   text: string;
 }
 
-export const rtkqApi = createApi({
-  reducerPath: 'rtkqApi',
+export const rtkqApiHelpers = createApi({
+  reducerPath: 'rtkqApiHelpers',
   baseQuery: fetchBaseQuery({ baseUrl: '' }),
   endpoints: (builder) => ({
     // example
@@ -24,4 +24,4 @@ export const rtkqApi = createApi({
   }),
 });
 
-export const { useGetRandomFactAboutCatQuery, useGetComplimentQuery } = rtkqApi;
+export const { useGetRandomFactAboutCatQuery, useGetComplimentQuery } = rtkqApiHelpers;

@@ -6,7 +6,7 @@ import App from './components/App.tsx';
 import { Provider } from 'react-redux';
 import { store } from './store/store.ts';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material';
+import { StyledEngineProvider, ThemeProvider, createTheme } from '@mui/material';
 
 const theme = createTheme({
   typography: {
@@ -19,9 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          {/* <StyledEngineProvider injectFirst> */}
-          <App />
-          {/* </StyledEngineProvider> */}
+          <StyledEngineProvider injectFirst>
+            <App />
+          </StyledEngineProvider>
         </BrowserRouter>
       </ThemeProvider>
     </Provider>

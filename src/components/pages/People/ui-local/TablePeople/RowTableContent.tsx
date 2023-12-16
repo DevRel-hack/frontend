@@ -1,40 +1,39 @@
 import TableCell from '@mui/material/TableCell';
-import { Autocomplete, Avatar, TextField, Typography, Link } from '@mui/material';
+import { Autocomplete, Avatar, TextField, Link } from '@mui/material';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import tgBlue from '~/assets/icons/telegram-blue.svg';
-import ButtonCheckResume from './ButtonCheckResume';
+import { IPeople } from '~/store/slices/people';
 
 // IMPORTANT
 // нельзя использовать хуки. Библиотека которая рендерит табличку их не поддерживает (цикличная работа => некор. использование хуков)
-function RowTableContent(_index: number, row: any) {
+function RowTableContent(_index: number, row: IPeople) {
   const inputOptions = [
-    { label: 'Не выбрано', id: 0 },
-    { label: 'На рассмотрении', id: 1 },
-    { label: 'Отправлено тестовое', id: 2 },
-    { label: 'Назначено собеседование', id: 3 },
-    { label: 'Отказ', id: 4 },
+    { label: 'Trainee', id: 0 },
+    { label: 'Junior', id: 1 },
+    { label: 'Middle', id: 2 },
+    { label: 'Senior', id: 3 },
+    { label: 'Lead', id: 4 },
   ];
 
   // TODO парсить сюда приходящее значение + check defVal
-  const defVal = inputOptions.find((item: { label: string }) => item.label === row.status.name) || inputOptions[0];
+  const defVal = inputOptions.find((item: { label: string }) => item.label === row.grade.title) || inputOptions[0];
   const getInputBgColor = (val: string) => {
     // TODO надо бы это вынести на бэк - цвета к статусам
     let color = '';
     switch (val) {
-      case 'Назначено собеседование':
+      case 'Lead':
         color = ' #FFF9D3';
         break;
-      case 'На рассмотрении':
-        color = '#C2E5CE';
-        break;
-      case 'Отправлено тестовое':
-        color = '#FFE1BD';
-        break;
-      case 'Отказ':
+      case 'Senior':
         color = 'rgba(255, 191, 253, 0.87)';
         break;
-      case 'Не выбрано':
-        color = row.portfolio ? '#DDE0E4' : '#ACCCFF';
+      case 'Middle':
+        color = '#ACCCFF';
+        break;
+      case 'Junior':
+        color = '#C2E5CE';
+        break;
+      case 'Trainee':
+        color = '#FFE1BD';
         break;
     }
 
@@ -46,31 +45,24 @@ function RowTableContent(_index: number, row: any) {
   };
 
   const inputValue = { ...defVal };
-  const name = row.applicant.first_name + ' ' + row.applicant.last_name;
 
   return (
     <>
       <TableCell align="center">
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <Avatar
-            alt={name}
+            alt={row.first_name + row.last_name}
             src="https://mediabrest.by/system/Cover/images/000/059/736/medium/zhivodera-iz-mozyrya-otpravyat-v-psihiatricheskuyu-bolnitsu_1561616899.jpg"
           />
-          <Typography>{name}</Typography>
         </div>
       </TableCell>
+      <TableCell>{row.first_name}</TableCell>
+      <TableCell>{row.last_name}</TableCell>
       <TableCell align="center">
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <Link
-            style={{ backgroundImage: `url(${tgBlue})`, width: 24, height: 24 }}
-            target="_blank"
-            href={`https://t.me/${row.applicant.telegram.slice(1)}`}
-          />
-          <Link
-            href={`mailto:${row.applicant.email}`}
-            target="_blanc"
-            style={{ width: 24, height: 24, color: '#B5B5B7' }}
-          >
+          {/* // href={`https://t.me/${row.applicant.telegram.slice(1)}`} */}
+          <Link target="_blank">{row.phone}</Link>
+          <Link href={`mailto:${row.email}`} target="_blank" style={{ width: 24, height: 24, color: '#B5B5B7' }}>
             <MailOutlineIcon />
           </Link>
         </div>
@@ -83,14 +75,12 @@ function RowTableContent(_index: number, row: any) {
           // т.к. value - объект, а js не умеет их сравнивать, нужно явно ему объяснить, какие объекты считать равными, т.е. как сопоставлять value & options
           isOptionEqualToValue={(option, value) => option.label === value.label && option.id === value.id}
           renderInput={(str) => <TextField {...str} sx={getInputBgColor(inputValue.label || 'TODO')} />}
-          onChange={(_, newValue) => {
-            const val = newValue || inputOptions[0];
-            // +1 для стыковки с БД. Это нужно поправить TODO
-            row.handleChange({ status: (val?.id ? val.id : 0) + 1, respondId: row.id });
-          }}
+          onChange={() => alert('В перспективе вы сможете изменять грейд прямо отсюда')}
         />
       </TableCell>
-      <TableCell align="left">{row.portfolio ? <ButtonCheckResume /> : <Typography>Отсутствует</Typography>}</TableCell>
+      <TableCell>{row.city.title}</TableCell>
+      <TableCell>{row.job.title}</TableCell>
+      <TableCell>{row.is_colleague ? 'Да' : 'Нет'}</TableCell>
     </>
   );
 }

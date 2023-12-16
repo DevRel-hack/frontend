@@ -9,6 +9,8 @@ import Paper from '@mui/material/Paper';
 import { TableVirtuoso } from 'react-virtuoso';
 import RowTableContent from './RowTableContent';
 import HeaderOfTableOfCandidates from './HeaderOfTable';
+import { useAppSelector } from '~/lib/hooks/reduxHooks';
+import { IPeople, selectPeople } from '~/store/slices/people';
 
 type VirtuosoTableComponentsType = {
   Scroller: React.ForwardRefExoticComponent<React.RefAttributes<HTMLDivElement>>;
@@ -30,6 +32,8 @@ VirtuosoTableComponents.Scroller.displayName = 'VirtuosoTableScroller';
 VirtuosoTableComponents.TableBody.displayName = 'VirtuosoTableBody';
 
 export default function TablePeople() {
+  const specialists = useAppSelector(selectPeople);
+
   // const dispatch = useDispatch();
   // const [changeStatusVacanciToId, { data }] = useChangeStatusVacanciToIdMutation();
 
@@ -44,7 +48,7 @@ export default function TablePeople() {
   // }, [data, dispatch]);
 
   // TODO: проверка на портфолио - поправить. Убрать статичное false
-  const modResponds: any[] = []; //данные
+  const modResponds: IPeople[] = specialists; //данные
 
   return (
     <Paper style={{ height: 800, width: '100%' }}>

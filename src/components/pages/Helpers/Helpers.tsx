@@ -8,8 +8,17 @@ export default function Helpers() {
   return (
     <section className="helpers">
       <div className="helpers__left helpers__column">
-        <div className="helpers__widget">Прогноз погоды</div>
-        <div className="helpers__widget">Колонка релевантных новостей</div>
+        <div className="helpers__widget">
+          <h4>Прогноз погоды</h4>
+          <p>Ждём у моря погоды</p>
+          <p>Осторожно, возможны осадки в виде фрикаделек</p>
+        </div>
+        <div className="helpers__widget">
+          <h4>Колонка релевантных новостей</h4>
+          <p>Я новость</p>
+          <p>И ты новость</p>
+          <p>Вот ведь дела</p>
+        </div>
       </div>
 
       <div className="helpers__center helpers__column">

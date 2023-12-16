@@ -6,6 +6,7 @@ const TodoList = () => {
   const [tasks, setTasks] = useState<{ do: boolean; val: string }[]>([
     { do: false, val: 'Выпить кофе' },
     { do: false, val: 'Узнать случайный факт о котиках' },
+    { do: false, val: 'Поработать' },
   ]);
   const [newTask, setNewTask] = useState('');
 
