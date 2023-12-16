@@ -4,91 +4,32 @@ import ButtonPanel from '~/components/ui/ButtonsPanel/ButtonsPanel';
 import Search from '~/components/ui/Search/Search';
 import EventCard from './ui/EventCard/EventCard';
 import Loader from '~/components/ui/Loader/Loader';
+import React from 'react';
+import { IEventData } from '~/lib/types/interfaces';
+//import { useSelector } from 'react-redux';
+//import { useGetEventsQuery } from '~/api/RTKQuery';
 
 export default function Events() {
   //const events = useSelector((store) => store.events);
-  const events = [
+  //const [getEvents] = useGetEventsQuery();
+
+  const initialState: IEventData[] = [
     {
-      id: '1',
-      title: 'Новый Хакатон',
-      description: 'Много слов о мероприятии',
-      start_at: '16.12.2023 18:00',
-      is_internal: false,
-      form: 'on',
-      place: 'интернет',
-      url: 'https://linktoevent.com',
-    },
-    {
-      id: '2',
-      title: 'Новый Хакатон',
-      description: 'Много слов о мероприятии',
-      start_at: '16.12.2023 18:00',
-      is_internal: false,
-      form: 'on',
-      place: 'интернет',
-      url: 'https://linktoevent.com',
-    },
-    {
-      id: '3',
-      title: 'Новый Хакатон',
-      description: 'Много слов о мероприятии',
-      start_at: '16.12.2023 18:00',
-      is_internal: false,
-      form: 'on',
-      place: 'интернет',
-      url: 'https://linktoevent.com',
-    },
-    {
-      id: '3',
-      title: 'Новый Хакатон',
-      description: 'Много слов о мероприятии',
-      start_at: '16.12.2023 18:00',
-      is_internal: false,
-      form: 'on',
-      place: 'интернет',
-      url: 'https://linktoevent.com',
-    },
-    {
-      id: '3',
-      title: 'Новый Хакатон',
-      description: 'Много слов о мероприятии',
-      start_at: '16.12.2023 18:00',
-      is_internal: false,
-      form: 'on',
-      place: 'интернет',
-      url: 'https://linktoevent.com',
-    },
-    {
-      id: '3',
-      title: 'Новый Хакатон',
-      description: 'Много слов о мероприятии',
-      start_at: '16.12.2023 18:00',
-      is_internal: false,
-      form: 'on',
-      place: 'интернет',
-      url: 'https://linktoevent.com',
-    },
-    {
-      id: '3',
-      title: 'Новый Хакатон',
-      description: 'Много слов о мероприятии',
-      start_at: '16.12.2023 18:00',
-      is_internal: false,
-      form: 'on',
-      place: 'интернет',
-      url: 'https://linktoevent.com',
-    },
-    {
-      id: '3',
-      title: 'Новый Хакатон',
-      description: 'Много слов о мероприятии',
-      start_at: '16.12.2023 18:00',
-      is_internal: false,
-      form: 'on',
-      place: 'интернет',
-      url: 'https://linktoevent.com',
+      id: null,
+      comments: '',
+      title: '',
+      description: '',
+      start_at: '',
+      is_internal: null,
+      form: '',
+      place: '',
+      url: '',
+      status: { id: null, title: '' },
+      tags: [{ id: null, title: '' }],
     },
   ];
+  const [events, setEvents] = React.useState(initialState);
+
   //const selectedVacancy = useSelector((store) => store.selectedVacancy);
   //const dispatch = useDispatch();
   //const { data: dataVacancies } = useGetVacanciesQuery(null);
@@ -121,6 +62,15 @@ export default function Events() {
       dispatch(setSelectedVacancy(dataVacanciToId));
     }
   }, [dataVacanciToId, dispatch]);*/
+
+  async function getEvents() {
+    const events = await fetch('https://a8a70fb723a.vps.myjino.ru/api/v1/events').then((res) => res.json());
+    setEvents([...events]);
+  }
+
+  React.useEffect(() => {
+    getEvents();
+  }, []);
 
   return (
     <>
