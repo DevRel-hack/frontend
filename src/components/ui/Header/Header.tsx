@@ -47,7 +47,7 @@ export default function Header() {
       </nav>
       <div className="header__profile-container">
         <div className="header__profile-content">
-          <IconButton>
+          <IconButton onClick={() => alert('Выпадашка с уведомлениями: возможно вам пора размяться')}>
             <NotificationsIcon />
           </IconButton>
           <NavLink to="/devRelMe/main/profile">

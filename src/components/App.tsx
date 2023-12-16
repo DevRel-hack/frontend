@@ -9,8 +9,24 @@ import Events from './pages/Events/Events';
 import Analytics from './pages/Analytics/Analytics';
 import Sending from './pages/Sending/Sending';
 import Profile from './pages/Profile/Profile';
+import Helpers from './pages/Helpers/Helpers';
+import { useGetAttributesQuery } from './pages/People/api/RTKQueryPeople';
+import { useEffect } from 'react';
+import { useAppDispatch } from '~/lib/hooks/reduxHooks';
+import { setAttributes } from '~/store/slices/attributes';
 
 function App() {
+  const dispatch = useAppDispatch();
+  const { data, error } = useGetAttributesQuery(null);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setAttributes(data));
+    } else if (error) {
+      alert('Произошла ошибка при попытке получить фильтры');
+    }
+  }, [data, error, dispatch]);
+
   return (
     <>
       <CssBaseline />
@@ -25,6 +41,7 @@ function App() {
             <Route path="analytics" element={<Analytics />} />
             <Route path="sending" element={<Sending />} />
             <Route path="profile" element={<Profile />} />
+            <Route index element={<Helpers />} />
           </Route>
           <Route index element={<Navigate to={'/devRelMe/entry/login'} />} />
         </Route>

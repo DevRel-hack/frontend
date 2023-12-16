@@ -14,7 +14,6 @@ export default function Layout({ children, type = 'full' }: ILayout) {
         //justifyContent: 'center',
         alignItems: 'center',
         minHeight: type === 'full' ? '100vh' : '80vh',
-        //minWidth: '100vw',
         padding: '20px',
         backgroundColor: '#fff',
         outline: '2px solid #000',
