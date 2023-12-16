@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+
+  &__logo {
+    color: orange;
+    font-size: 24px;
+  }
+
+  &__links-container {
+    width: 100%;
+  }
+
+  &__links-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+
+    font-size: 20px;
+    list-style: none;
+    font-weight: 600;
+  }
+
+  &__link {
+    transition: 0.2s linear;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__profile {
+    &-container {
+      display: flex;
+      gap: 40px;
+    }
+
+    &-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: end;
+      gap: 10px;
+      width: max-content;
+    }
+
+    &-name {
+      margin: 0;
+      font-size: 16px;
+    }
+  }
+}

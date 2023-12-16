@@ -10,7 +10,7 @@ export default function Footer() {
         backgroundColor: '#fff',
       }}
     >
-      <h2>Здесь будет подвал</h2>
+      <h3>Created by our teem</h3>
     </footer>
   );
 }

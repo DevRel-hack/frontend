@@ -15,8 +15,9 @@ function App() {
             <Route path="login" element={<Login />} />
           </Route>
           <Route path="main" element={<LayoutWithHeaderAndFooter />} />
-          <Route path="*" element={<Navigate to={'/devRelMe/entry/login'} />} />
+          <Route index element={<Navigate to={'/devRelMe/entry/login'} />} />
         </Route>
+        <Route path="*" element={<Navigate to={'/devRelMe/entry/login'} />} />
 
         {/* <Route path="/login" element={<ProtectOfRoute Element={Login} />} /> */}
         {/* <Route path="/register" element={<ProtectOfRoute Element={Register} />} />
