@@ -11,10 +11,10 @@ export default function Layout({ children, type = 'full' }: ILayout) {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        //justifyContent: 'center',
         alignItems: 'center',
         minHeight: type === 'full' ? '100vh' : '80vh',
-        minWidth: '100vw',
+        //minWidth: '100vw',
         padding: '20px',
         backgroundColor: '#fff',
         outline: '2px solid #000',
