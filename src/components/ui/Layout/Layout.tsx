@@ -13,10 +13,10 @@ export default function Layout({ children, type = 'full' }: ILayout) {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: type === 'full' ? '100vh' : '75vh',
+        minHeight: type === 'full' ? '100vh' : '80vh',
         minWidth: '100vw',
         padding: '20px',
-        backgroundColor: '#000',
+        backgroundColor: '#64400f',
       }}
     >
       <Outlet />

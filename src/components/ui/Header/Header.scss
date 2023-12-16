@@ -3,11 +3,12 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 10px 20px;
   background-color: #fff;
 
   &__logo {
-    color: orange;
+    margin: 0;
+    color: var(--active-color);
     font-size: 24px;
   }
 
@@ -32,6 +33,10 @@
 
     &:hover {
       opacity: 0.7;
+    }
+
+    &_active {
+      color: var(--active-color);
     }
   }
 

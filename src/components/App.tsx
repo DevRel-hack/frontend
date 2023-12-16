@@ -4,6 +4,11 @@ import { CssBaseline } from '@mui/material';
 import { Login } from './pages/Login/Login';
 import Layout from './ui/Layout/Layout';
 import LayoutWithHeaderAndFooter from './ui/Layout/LayoutWithHeaderAndFooter';
+import People from './pages/People/People';
+import Events from './pages/Events/Events';
+import Analytics from './pages/Analytics/Analytics';
+import Sending from './pages/Sending/Sending';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   return (
@@ -14,24 +19,16 @@ function App() {
           <Route path="entry" element={<Layout />}>
             <Route path="login" element={<Login />} />
           </Route>
-          <Route path="main" element={<LayoutWithHeaderAndFooter />} />
+          <Route path="main" element={<LayoutWithHeaderAndFooter />}>
+            <Route path="people" element={<People />} />
+            <Route path="events" element={<Events />} />
+            <Route path="analytics" element={<Analytics />} />
+            <Route path="sending" element={<Sending />} />
+            <Route path="profile" element={<Profile />} />
+          </Route>
           <Route index element={<Navigate to={'/devRelMe/entry/login'} />} />
         </Route>
         <Route path="*" element={<Navigate to={'/devRelMe/entry/login'} />} />
-
-        {/* <Route path="/login" element={<ProtectOfRoute Element={Login} />} /> */}
-        {/* <Route path="/register" element={<ProtectOfRoute Element={Register} />} />
-        <Route path="/change-password" element={<ProtectOfRoute Element={ChangePassword} />} />
-        <Route path="/confirm-password" element={<ProtectOfRoute Element={ConfirmPassword} />} />
-        <Route path="/" element={<ProtectOfRoute Element={AddHeader} onlyLoggedIn />}>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/vacancy" element={<Vacancy />} />
-          <Route path="/create-vacancy" element={<CreateVacancy />} />
-          <Route path="/favorite-candidates" element={<Favorite />} />
-          <Route path="/candidates" element={<Candidates />} />
-          <Route index element={<Navigate to={'/candidates'} />} />
-        </Route>
-        <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </>
   );

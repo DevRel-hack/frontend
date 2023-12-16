@@ -1,3 +1,7 @@
 export default function People() {
-  return <h1>Здесь будут люди</h1>;
+  return (
+    <>
+      <h1>Здесь будут люди</h1>
+    </>
+  );
 }
