@@ -16,7 +16,8 @@ export default function Layout({ children, type = 'full' }: ILayout) {
         minHeight: type === 'full' ? '100vh' : '80vh',
         minWidth: '100vw',
         padding: '20px',
-        backgroundColor: '#64400f',
+        backgroundColor: '#fff',
+        outline: '2px solid #000',
       }}
     >
       <Outlet />
