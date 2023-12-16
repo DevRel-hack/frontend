@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { rtkqApi } from '~/api/RTKQuery';
+import { rtkqApi } from '~/components/pages/Helpers/api/RTKQuery';
 import counterSlice from './slices/example';
 
 export const store = configureStore({

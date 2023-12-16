@@ -1,0 +1,42 @@
+$border-width: 1px;
+$border-color: grey;
+
+.helpers {
+  width: 100%;
+  margin: 0px;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  margin-bottom: auto;
+  gap: 30px;
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex-grow: 1;
+  }
+
+  &__widget {
+    border: $border-color solid $border-width;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #000;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+  }
+
+  &__center {
+    min-height: var(--min-height-main);
+  }
+
+  &__right {
+    flex-grow: 0;
+    max-width: 362px;
+  }
+}

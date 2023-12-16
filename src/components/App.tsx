@@ -9,6 +9,7 @@ import Events from './pages/Events/Events';
 import Analytics from './pages/Analytics/Analytics';
 import Sending from './pages/Sending/Sending';
 import Profile from './pages/Profile/Profile';
+import Helpers from './pages/Helpers/Helpers';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="analytics" element={<Analytics />} />
             <Route path="sending" element={<Sending />} />
             <Route path="profile" element={<Profile />} />
+            <Route index element={<Helpers />} />
           </Route>
           <Route index element={<Navigate to={'/devRelMe/entry/login'} />} />
         </Route>

@@ -8,7 +8,6 @@ export default function Footer() {
         alignItems: 'center',
         padding: '10px',
         backgroundColor: '#fff',
-        outline: '1px solid red',
       }}
     >
       <h3>Created by our teem</h3>
