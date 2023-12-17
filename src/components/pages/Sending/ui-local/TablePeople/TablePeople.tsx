@@ -10,7 +10,7 @@ import { TableVirtuoso } from 'react-virtuoso';
 import RowTableContent from './RowTableContent';
 import HeaderOfTableOfCandidates from './HeaderOfTable';
 import { useAppSelector } from '~/lib/hooks/reduxHooks';
-import { IPeople, selectPeople } from '~/store/slices/people';
+import { selectSelectedPeople } from '~/store/slices/selectedPeople';
 
 type VirtuosoTableComponentsType = {
   Scroller: React.ForwardRefExoticComponent<React.RefAttributes<HTMLDivElement>>;
@@ -32,7 +32,7 @@ VirtuosoTableComponents.Scroller.displayName = 'VirtuosoTableScroller';
 VirtuosoTableComponents.TableBody.displayName = 'VirtuosoTableBody';
 
 export default function TablePeople() {
-  const specialists = useAppSelector(selectPeople);
+  const specialists = useAppSelector(selectSelectedPeople);
 
   // const dispatch = useDispatch();
   // const [changeStatusVacanciToId, { data }] = useChangeStatusVacanciToIdMutation();
@@ -41,20 +41,11 @@ export default function TablePeople() {
   //   void changeStatusVacanciToId({ ...data, vacanciId: dataResponds.id });
   // };
 
-  // React.useEffect(() => {
-  //   if (data) {
-  //     dispatch(setNewStatsToId(data));
-  //   }
-  // }, [data, dispatch]);
-
-  // TODO: проверка на портфолио - поправить. Убрать статичное false
-  const modResponds: IPeople[] = specialists; //данные
-
   return (
-    <Paper style={{ height: '50vh', width: '100%' }}>
-      <h4 style={{ margin: 0 }}>Человек в выборке: {modResponds.length}</h4>
+    <Paper style={{ height: '40vh', width: '100%' }}>
+      <h4 style={{ margin: 0 }}>Итого получателей: {specialists.length}</h4>
       <TableVirtuoso
-        data={modResponds}
+        data={specialists}
         components={VirtuosoTableComponents}
         fixedHeaderContent={HeaderOfTableOfCandidates}
         itemContent={RowTableContent}

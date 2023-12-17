@@ -23,7 +23,6 @@ export default function People() {
   return Object.keys(attributes).length ? (
     <div className="people">
       <FiltersList />
-      <h1>Здесь будут люди</h1>
       {isLoading ? <Loader /> : <TablePeople />}
     </div>
   ) : (

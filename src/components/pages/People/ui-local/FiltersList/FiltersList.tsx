@@ -3,12 +3,18 @@ import { Button, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import FilterDropper from '~/components/ui/FilterDropped/FilterDropped';
 import { dataBd, dataColleague, dataCom } from './constants';
-import { useAppSelector } from '~/lib/hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '~/lib/hooks/reduxHooks';
 import { selectAttributes } from '~/store/slices/attributes';
 import { getTitleList } from '~/lib/utils/getTitleList';
+import { setSelectedPeople } from '~/store/slices/selectedPeople';
+import { selectPeople } from '~/store/slices/people';
+import { useNavigate } from 'react-router-dom';
 
 const FiltersList = () => {
+  const dispatch = useAppDispatch();
   const attributes = useAppSelector(selectAttributes);
+  const people = useAppSelector(selectPeople);
+  const navigate = useNavigate();
 
   const [bdFilters, setBdFilters] = useState<string[]>([]);
   const [comFilters, setComFilters] = useState<string[]>([]);
@@ -43,6 +49,11 @@ const FiltersList = () => {
   // const handleSubmitClick = () => {
   //   console.log('Форма не ушла, но кнопка сработала');
   // };
+
+  const handleSendler = () => {
+    dispatch(setSelectedPeople(people));
+    navigate('/devRelMe/main/sending');
+  };
 
   return (
     <section className={style['container']}>
@@ -79,6 +90,7 @@ const FiltersList = () => {
           label="Фамилия | email | tel | company"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
+          sx={{ minWidth: '260px' }}
         />
         {/* <FilterDropper data={data} label="Уровни" state={gradeFilters} setState={setGradeFilters} /> */}
         {/* <FilterDropper data={data} label="Инструменты" state={toolsFilters} setState={setToolsFilters} /> */}
@@ -109,11 +121,7 @@ const FiltersList = () => {
         >
           Использовать файл как источник
         </Button>
-        <Button
-          variant="contained"
-          sx={{ minHeight: '56px' }}
-          onClick={() => alert('Перенаправить на окно создания рассылки, с текущей выборкой участников')}
-        >
+        <Button variant="contained" sx={{ minHeight: '56px' }} onClick={handleSendler}>
           Рассылка для выборки
         </Button>
       </div>

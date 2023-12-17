@@ -9,15 +9,15 @@ export default function Helpers() {
     <section className="helpers">
       <div className="helpers__left helpers__column">
         <div className="helpers__widget">
-          <h4>Прогноз погоды</h4>
-          <p>Ждём у моря погоды</p>
-          <p>Осторожно, возможны осадки в виде фрикаделек</p>
+          <h4 style={{ margin: 0 }}>Прогноз погоды</h4>
+          <p style={{ margin: 0 }}>* Ждём у моря погоды</p>
+          <p style={{ margin: 0 }}>* Осторожно, возможны осадки в виде фрикаделек</p>
         </div>
         <div className="helpers__widget">
-          <h4>Колонка релевантных новостей</h4>
-          <p>Я новость</p>
-          <p>И ты новость</p>
-          <p>Вот ведь дела</p>
+          <h4 style={{ margin: 0 }}>Колонка релевантных новостей</h4>
+          <p style={{ margin: 0 }}>* Я новость</p>
+          <p style={{ margin: 0 }}>* И ты новость</p>
+          <p style={{ margin: 0 }}>* Вот ведь дела</p>
         </div>
       </div>
 

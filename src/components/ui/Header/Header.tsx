@@ -40,7 +40,7 @@ export default function Header() {
               to="/devRelMe/main/sending"
               className={({ isActive }) => (isActive ? 'header__link header__link_active' : 'header__link')}
             >
-              По рассылочке
+              Мои рассылки
             </NavLink>
           </li>
         </ul>
