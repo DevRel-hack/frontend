@@ -1,6 +1,7 @@
 # frontend
 
 ## Чтобы развернуть локально:
+
 git clone git@github.com:DevRel-hack/frontend.git
 cd ./frontend
 npm i

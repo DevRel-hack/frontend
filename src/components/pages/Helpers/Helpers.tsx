@@ -15,9 +15,9 @@ export default function Helpers() {
         </div>
         <div className="helpers__widget">
           <h4 style={{ margin: 0 }}>Колонка релевантных новостей</h4>
-          <p style={{ margin: 0 }}>* Я новость</p>
-          <p style={{ margin: 0 }}>* И ты новость</p>
-          <p style={{ margin: 0 }}>* Вот ведь дела</p>
+          <p style={{ margin: 0 }}>* YPap запустил новый Хакатон!</p>
+          <p style={{ margin: 0 }}>* Mr. Bim снова устаривает митап!</p>
+          <p style={{ margin: 0 }}>* На кухне кто-то открыл холодильник!</p>
         </div>
       </div>
 
