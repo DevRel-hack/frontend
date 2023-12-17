@@ -12,7 +12,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint-fix": "npm run lint --fix",
     "check": "npm run format-fix && npm run lint-fix && npm run build",
-    "commit": "npm run check && git add -A && cz"
+    "commit": "npm run check && git add -A && cz",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -42,11 +44,13 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "gh-pages": "^6.1.0",
     "prettier": "^3.1.1",
     "sass": "^1.69.5",
     "typescript": "^5.2.2",
     "vite": "^4.5.1"
   },
+  "homepage": "https://DevRel-hack.github.io/frontend/",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
