@@ -1,13 +1,13 @@
 # frontend
 
 ## Чтобы развернуть локально:
-
+```
 git clone git@github.com:DevRel-hack/frontend.git
 cd ./frontend
 npm i
 npm run dev
 Пройти по ссылке из терминала
-
+```
 ## Руководство разработчика
 
 | Скрипт       | Описание                                                                                                     |
