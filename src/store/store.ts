@@ -4,6 +4,7 @@ import { rtkqApiHelpers } from '~/components/pages/Helpers/api/RTKQueryHelpers';
 import { rtkqApiPeople } from '~/components/pages/People/api/RTKQueryPeople';
 import peopleSlice from './slices/people';
 import attributesSlice from './slices/attributes';
+import eventsSlice from './slices/eventsSlice';
 import selectedPeopleSlice from './slices/selectedPeople';
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
     [rtkqApiHelpers.reducerPath]: rtkqApiHelpers.reducer,
     [rtkqApiPeople.reducerPath]: rtkqApiPeople.reducer,
     people: peopleSlice,
+    events: eventsSlice,
     attributes: attributesSlice,
     selectedPeople: selectedPeopleSlice,
   },
