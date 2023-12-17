@@ -36,7 +36,7 @@ export default function Events() {
           <Search />
           <ButtonPanel state={eventPage} setState={setEventPage} />
         </Box>
-        <Button variant="contained" onClick={() => navigate('/devRelMe/main/addEvent')}>
+        <Button variant="contained" onClick={() => navigate('/dev-rel-me/main/addEvent')}>
           Создать мероприятие
         </Button>
       </Box>
