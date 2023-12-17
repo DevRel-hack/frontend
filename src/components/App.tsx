@@ -14,6 +14,7 @@ import { useGetAttributesQuery } from './pages/People/api/RTKQueryPeople';
 import { useEffect } from 'react';
 import { useAppDispatch } from '~/lib/hooks/reduxHooks';
 import { setAttributes } from '~/store/slices/attributes';
+import CreateEvent from './pages/CreateEvent/CreateEvent';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -41,6 +42,7 @@ function App() {
             <Route path="analytics" element={<Analytics />} />
             <Route path="sending" element={<Sending />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="addEvent" element={<CreateEvent />} />
             <Route index element={<Helpers />} />
           </Route>
           <Route index element={<Navigate to={'/devRelMe/entry/login'} />} />
