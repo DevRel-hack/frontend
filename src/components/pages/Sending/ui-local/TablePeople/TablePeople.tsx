@@ -41,7 +41,7 @@ export default function TablePeople() {
   //   void changeStatusVacanciToId({ ...data, vacanciId: dataResponds.id });
   // };
 
-  return (
+  return specialists.length ? (
     <Paper style={{ height: '40vh', width: '100%' }}>
       <h4 style={{ margin: 0 }}>Итого получателей: {specialists.length}</h4>
       <TableVirtuoso
@@ -51,5 +51,11 @@ export default function TablePeople() {
         itemContent={RowTableContent}
       />
     </Paper>
+  ) : (
+    <div style={{ minHeight: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <h4 style={{ maxWidth: '300px', textAlign: 'center' }}>
+        Выберите рассылку слева в меню(пока не реализовано) или получите выборку от странички &quot;Люди&quot;
+      </h4>
+    </div>
   );
 }

@@ -1,17 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { backApi } from '~/lib/constants';
 import { IEventData } from '~/lib/types/interfaces';
-import { IAttributes } from '~/store/slices/attributes';
 
 export const rtkqApiEvents = createApi({
-  reducerPath: 'rtkqApiPeople',
+  reducerPath: 'rtkqApiEvents',
   baseQuery: fetchBaseQuery({ baseUrl: backApi }),
   endpoints: (builder) => ({
-    getEvents: builder.query<IEventData, null>({
+    getEvents: builder.query<IEventData[], null>({
       query: () => 'events/',
-    }),
-    getAttributes: builder.query<IAttributes, null>({
-      query: () => 'attributes',
     }),
   }),
 });

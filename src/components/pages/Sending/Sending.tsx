@@ -11,7 +11,6 @@ export default function Sending() {
       </aside>
       <div className="sending__div" />
       <section className="sending__content">
-        <h1 className="sending__title">Новая рассылка</h1>
         <SendlerForm />
         <TablePeople />
       </section>

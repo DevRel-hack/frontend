@@ -6,7 +6,7 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import eventPoster from '~/assets/photo_2023-12-17 01.21.12.jpeg';
 import { IEventData } from '~/lib/types/interfaces';
 
-export default function EventCard(eventData: IEventData) {
+export default function EventCard({ eventData }: { eventData: IEventData }) {
   const { title, description } = eventData;
   return (
     <Card sx={{ maxWidth: 345 }}>

@@ -11,7 +11,7 @@ export default function Layout({ children, type = 'full' }: ILayout) {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        //justifyContent: 'center',
+        justifyContent: 'center',
         alignItems: 'center',
         minHeight: type === 'full' ? '100vh' : '80vh',
         padding: '20px',
