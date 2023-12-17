@@ -7,8 +7,10 @@ import Loader from '~/components/ui/Loader/Loader';
 import { useAppDispatch, useAppSelector } from '~/lib/hooks/reduxHooks';
 import { useGetEventsQuery } from './api/queryEvents';
 import { selectEvents, setEvents } from '~/store/slices/eventsSlice';
+import { useNavigate } from 'react-router-dom';
 
 export default function Events() {
+  const navigate = useNavigate();
   const { data, error } = useGetEventsQuery(null);
   const [eventPage, setEventPage] = useState('активные');
 
@@ -23,6 +25,10 @@ export default function Events() {
     }
   }, [data, error, dispatch]);
 
+  const isButton = (evt: any) => {
+    return evt.target.type !== 'button';
+  };
+
   return (
     <>
       <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
@@ -30,7 +36,9 @@ export default function Events() {
           <Search />
           <ButtonPanel state={eventPage} setState={setEventPage} />
         </Box>
-        <Button variant="contained">Создать мероприятие</Button>
+        <Button variant="contained" onClick={() => navigate('/devRelMe/main/addEvent')}>
+          Создать мероприятие
+        </Button>
       </Box>
       <Box sx={{ width: '100%', display: 'flex', pt: 6 }}>
         {events.length ? (
@@ -46,7 +54,7 @@ export default function Events() {
             }}
           >
             {events.map((data) => (
-              <li key={data.id} onClick={() => alert(data.id + ' ' + data.title)}>
+              <li key={data.id} onClick={(evt) => isButton(evt) && alert(data.id + ' ' + data.title)}>
                 <EventCard eventData={data} />
               </li>
             ))}
