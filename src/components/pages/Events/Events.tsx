@@ -1,76 +1,27 @@
 import { Box, Button, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ButtonPanel from '~/components/ui/ButtonsPanel/ButtonsPanel';
 import Search from '~/components/ui/Search/Search';
 import EventCard from './ui/EventCard/EventCard';
 import Loader from '~/components/ui/Loader/Loader';
-import React from 'react';
-import { IEventData } from '~/lib/types/interfaces';
-//import { useSelector } from 'react-redux';
-//import { useGetEventsQuery } from '~/api/RTKQuery';
+import { TRootState, useAppDispatch, useAppSelector } from '~/lib/hooks/reduxHooks';
+import { useGetEventsQuery } from './api/queryEvents';
+import { setEvents } from '~/store/slices/eventsSlice';
 
 export default function Events() {
-  //const events = useSelector((store) => store.events);
-  //const [getEvents] = useGetEventsQuery();
-
-  const initialState: IEventData[] = [
-    {
-      id: null,
-      comments: '',
-      title: '',
-      description: '',
-      start_at: '',
-      is_internal: null,
-      form: '',
-      place: '',
-      url: '',
-      status: { id: null, title: '' },
-      tags: [{ id: null, title: '' }],
-    },
-  ];
-  const [events, setEvents] = React.useState(initialState);
-
-  //const selectedVacancy = useSelector((store) => store.selectedVacancy);
-  //const dispatch = useDispatch();
-  //const { data: dataVacancies } = useGetVacanciesQuery(null);
-  //const [getVacanciesToId, { data: dataVacanciToId }] = useGetVacanciToIdMutation();
-
   const [eventPage, setEventPage] = useState('активные');
-  //const [titleVacancy, setTitleVacancy] = useState('');
-  //const isArchivePage = eventPage === 'в архиве';
 
-  /*const handleClickVacancy = (id: string, title: string) => {
-    if (!isArchivePage) {
-      void getVacanciesToId(id);
-      // несмотря на то, что мы меняем стейт независимо от ответа сервера, отражаться заголовок будет только когда данные будут получены и при том успешно
-      setTitleVacancy(title);
+  const events = useAppSelector((store: TRootState) => store.events);
+  const dispatch = useAppDispatch();
+  const { data, error, isLoading } = useGetEventsQuery(null);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setEvents(data));
+    } else if (error) {
+      alert('Ошибка при получении данных');
     }
-  };
-
-  const handleChangeStatus = (data: IVacanci) => {
-    dispatch(setNewStatusToId(data));
-  };
-
-  React.useEffect(() => {
-    if (dataVacancies) {
-      dispatch(setVacancies(dataVacancies));
-    }
-  }, [dataVacancies, dispatch]);
-
-  React.useEffect(() => {
-    if (dataVacanciToId) {
-      dispatch(setSelectedVacancy(dataVacanciToId));
-    }
-  }, [dataVacanciToId, dispatch]);*/
-
-  async function getEvents() {
-    const events = await fetch('https://a8a70fb723a.vps.myjino.ru/api/v1/events').then((res) => res.json());
-    setEvents([...events]);
-  }
-
-  React.useEffect(() => {
-    getEvents();
-  }, []);
+  }, [data, error, isLoading, dispatch]);
 
   return (
     <>
