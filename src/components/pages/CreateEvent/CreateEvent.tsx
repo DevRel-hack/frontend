@@ -1,9 +1,9 @@
-import createEventPoster from '~/assets/newEvent.png';
+import styles from './CreateEvent.module.css';
 
 export default function CreateEvent() {
   return (
     <>
-      <img src={createEventPoster} alt="заглушка" />
+      <div className={styles['container']}></div>
     </>
   );
 }
