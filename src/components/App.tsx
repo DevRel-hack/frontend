@@ -31,7 +31,7 @@ function App() {
     <>
       <CssBaseline />
       <Routes>
-        <Route path="/devRelMe" element={<Outlet />}>
+        <Route path="/dev-rel-me" element={<Outlet />}>
           <Route path="entry" element={<Layout />}>
             <Route path="login" element={<Login />} />
           </Route>
@@ -43,9 +43,9 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route index element={<Helpers />} />
           </Route>
-          <Route index element={<Navigate to={'/devRelMe/entry/login'} />} />
+          <Route index element={<Navigate to={'/dev-rel-me/entry/login'} />} />
         </Route>
-        <Route path="*" element={<Navigate to={'/devRelMe/entry/login'} />} />
+        <Route path="*" element={<Navigate to={'/dev-rel-me/entry/login'} />} />
       </Routes>
     </>
   );

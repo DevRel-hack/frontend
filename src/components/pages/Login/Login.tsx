@@ -5,7 +5,7 @@ export const Login = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Button variant="contained" size="large" color="success" onClick={() => navigate('/devRelMe/main')}>
+      <Button variant="contained" size="large" color="success" onClick={() => navigate('/dev-rel-me/main')}>
         I am devrel
       </Button>
     </>

@@ -17,13 +17,21 @@ export default function SendlerForm() {
             textAlign: 'center',
             cursor: 'pointer',
           }}
+          onClick={() => alert('Фича в разработке')}
         >
           <h4 style={{ margin: 0 }}>В перспективе, сюда перетаскиваем вложения к рассылке</h4>
         </div>
       </div>
       <div style={{ flexGrow: 4, display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <div style={{ textAlign: 'right' }}>
-          <Button variant="contained">Отправить</Button>
+          <Button
+            variant="contained"
+            onClick={() =>
+              alert('А теперь данные вжух и отправляются на бэкенд, который и будет заниматься рассылкой.')
+            }
+          >
+            Отправить
+          </Button>
         </div>
         <TextField
           id="outlined-basic"

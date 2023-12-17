@@ -24,8 +24,11 @@ export default function SendlerList() {
           <ul>
             <ListSubheader>{`year ${years[sectionId]}`}</ListSubheader>
             {[0, 1, 2].map((item) => (
-              <ListItem key={`item-${sectionId}-${item}`}>
-                <ListItemText primary={`Рассылка ${item} от dd.mm по теме $topic`} />
+              <ListItem
+                key={`item-${sectionId}-${item}`}
+                onClick={() => alert('Я не очень интерактивный, но стану, когда вырасту')}
+              >
+                <ListItemText primary={`Рассылка ${item} от dd.mm по теме $topic`} sx={{ cursor: 'pointer' }} />
               </ListItem>
             ))}
           </ul>

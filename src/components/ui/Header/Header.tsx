@@ -6,14 +6,14 @@ import { Avatar, IconButton } from '@mui/material';
 export default function Header() {
   return (
     <header className="header">
-      <NavLink className="header__links-item" to="/devRelMe/main">
+      <NavLink className="header__links-item" to="/dev-rel-me/main">
         <h3 className="header__logo">Логотип</h3>
       </NavLink>
       <nav className="header__links-container">
         <ul className="header__links-list">
           <li className="header__links-item">
             <NavLink
-              to="/devRelMe/main/people"
+              to="/dev-rel-me/main/people"
               className={({ isActive }) => (isActive ? 'header__link header__link_active' : 'header__link')}
             >
               Люди
@@ -21,7 +21,7 @@ export default function Header() {
           </li>
           <li className="header__links-item">
             <NavLink
-              to="/devRelMe/main/analytics"
+              to="/dev-rel-me/main/analytics"
               className={({ isActive }) => (isActive ? 'header__link header__link_active' : 'header__link')}
             >
               Аналитика
@@ -29,7 +29,7 @@ export default function Header() {
           </li>
           <li className="header__links-item">
             <NavLink
-              to="/devRelMe/main/events"
+              to="/dev-rel-me/main/events"
               className={({ isActive }) => (isActive ? 'header__link header__link_active' : 'header__link')}
             >
               Мои мероприятия
@@ -37,7 +37,7 @@ export default function Header() {
           </li>
           <li className="header__links-item">
             <NavLink
-              to="/devRelMe/main/sending"
+              to="/dev-rel-me/main/sending"
               className={({ isActive }) => (isActive ? 'header__link header__link_active' : 'header__link')}
             >
               Мои рассылки
@@ -50,7 +50,7 @@ export default function Header() {
           <IconButton onClick={() => alert('Выпадашка с уведомлениями: возможно вам пора размяться')}>
             <NotificationsIcon />
           </IconButton>
-          <NavLink to="/devRelMe/main/profile">
+          <NavLink to="/dev-rel-me/main/profile">
             <Avatar
               alt="Ваш аватар"
               src="https://i.ytimg.com/vi/zjltQhTahmo/hqdefault.jpg"

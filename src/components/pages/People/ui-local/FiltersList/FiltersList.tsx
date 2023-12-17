@@ -52,7 +52,7 @@ const FiltersList = () => {
 
   const handleSendler = () => {
     dispatch(setSelectedPeople(people));
-    navigate('/devRelMe/main/sending');
+    navigate('/dev-rel-me/main/sending');
   };
 
   return (
